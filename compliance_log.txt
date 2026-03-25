@@ -1,0 +1,48 @@
+
+===============================================
+DATA ANONYMIZATION COMPLIANCE LOG
+===============================================
+Timestamp: 2026-03-24T15:45:50.178849
+Source: sap_ecc_treasury_clean.csv
+Output: sap_ecc_treasury_encoded.csv
+Rows: 10000
+
+FIELDS ENCODED (PII/Corporate Identifiers):
+  - BUKRS (Company Code) → ENTITY_XXX
+  - NAME1 (Counterparty Name) → CPTY_XXX
+  - LIFNR (Vendor ID) → VND_XXX
+  - KUNNR (Customer ID) → CST_XXX
+  - HBKID (House Bank ID) → BNK_XXX
+  - HKTID (Bank Account ID) → ACCT_XXX
+  - BANKN (External Bank Number) → IBAN_XXX
+  - BELNR (Document Number) → DOC_XXX
+  - DEAL_ID → DEAL_XXX
+  - COUNTERPARTY_BANK → FXBNK_XXX
+  - KOSTL (Cost Center) → CC_XXX
+  - ZUESSION (Assignment Ref) → REF_XXX
+  - ERNAM (User ID) → USR_XXX
+  - SGTXT (Free Text) → Names replaced with encoded versions
+  - WRBTR/DMBTR (Amounts) → Scaled by secret factor
+  - MANDT (Client) → Removed entirely
+
+FIELDS SENT RAW (Required for analysis):
+  - GJAHR, BUDAT, BLDAT, VALUT, CPUDT, AEDAT (Dates)
+  - WAERS (Currency Code)
+  - KURSF (Exchange Rate)
+  - BLART (Document Type)
+  - BSCHL (Posting Key)
+  - HKONT (G/L Account)
+  - DEAL_TYPE, DEAL_STATUS
+  - MATURITY_DATE
+  - PRCTR (Profit Center)
+  - RZAWE (Payment Method)
+  - BUZEI (Line Item)
+
+EXTERNAL AI SERVICE: Anthropic Claude API
+MAPPING FILE: encoding_mappings.json (LOCAL ONLY — NOT transmitted)
+AMOUNT SCALE FACTOR: Stored in mapping file (LOCAL ONLY)
+
+CONFIRMATION: No real entity names, bank account numbers,
+document references, or unscaled financial amounts were
+transmitted to any external service.
+===============================================
